@@ -16,3 +16,4 @@ public class QuPyramid02 {
 	}
 
 }
+
