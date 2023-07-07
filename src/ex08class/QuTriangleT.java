@@ -18,6 +18,23 @@ public class QuTriangleT {
 			//만약 이름이 같다면 멤버변수를 가리키는 this를 추가한다.
 			this.height = height;
 		}
+		
+		//삼각형의 넓이(밑변 * 높이 / 2);
+		/* 삼각형의 넓이는 0.5를 곱하는 연산, 즉 실수의 결과가 나올 확률이 높으므로 반환타입은
+		 double로 하는 것이 좋다. */
+		double getArea() {
+			return bottom * height * 0.5; 
+		}
+		
+		//밑변과 높이를 설정하는 멤버 메서드
+		void setBottom(int bottom) {
+			this.bottom = bottom;
+		}
+		
+		void setHeight(int height) {
+			this.height = height;
+		}
+		
 	}
 	public static void main(String[] args)
 	{

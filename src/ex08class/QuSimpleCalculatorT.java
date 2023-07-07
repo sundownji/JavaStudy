@@ -58,7 +58,7 @@ public class QuSimpleCalculatorT {
 	
 	public static void main(String[] args)
 	{
-		CalculatorEx cal = new CalculatorEx();
+		CalculatorEx cal =new CalculatorEx();
 		cal.init();
 		System.out.println("1 + 2 = " + cal.add(1 , 2));
 		System.out.println("10.5 - 5.5 = " + cal.min(10.5 , 5.5));
