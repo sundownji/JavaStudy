@@ -38,7 +38,7 @@ public class QuTriangleT {
 	}
 	public static void main(String[] args)
 	{
-		Triangle t = new Triangle();
+		Triangle t =new Triangle();
 		//반환값이 없음 t.init(10,17) 출력문에 나오는 것도 아니고 좌측에 변수선언도 없어서
 		t.init(10, 17); //밑변10, 높이17로 초기화
 		System.out.println("삼각형의 넓이 : "+ t.getArea());
