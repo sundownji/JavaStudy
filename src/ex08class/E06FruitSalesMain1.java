@@ -18,20 +18,20 @@ class FruitSeller{
 }
 
 class FruitBuyer{
+	int myMoney = 5000; 
+	int numOfApple = 0; 
 	
-	int myMoney = 5000;
-	int numOfApple = 0;
-	
-	//타입이 FruitSeller가 된다.
 	public void buyApple(FruitSeller seller, int money) {
 		numOfApple += seller.saleApple(money);
 		myMoney -= money;
 	}
+
 	public void showBuyResult() {
 		System.out.println("[구매자]현재잔액:"+myMoney);
 		System.out.println("[구매자]사과갯수:"+numOfApple);
 	}
 }
+
 public class E06FruitSalesMain1 {
 
 	public static void main(String[] args) {
@@ -47,6 +47,7 @@ public class E06FruitSalesMain1 {
 		
 		System.out.println("구매행위가 일어난 후의 상태");
 		seller.showSaleResult();
+		
 		buyer.showBuyResult();
 
 	}
