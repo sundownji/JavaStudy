@@ -118,6 +118,7 @@ public class E10MyFriendInfoBook {
 			//2.사용자는 수행할 기능의 메뉴를 선택한다.
 			int choice = scan.nextInt();
 			//3.선택한 번호에 따라 switch문으로 각 메서드를 호출한다.
+			
 			switch(choice) {
 			case 1: case 2:
 				handler.addFriend(choice);
