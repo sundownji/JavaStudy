@@ -111,7 +111,6 @@ public class E10MyFriendInfoBook {
 		Scanner scan =new Scanner(System.in);
 		//기능을 담당하는 핸들러 클래스의 인스턴스 생성
 		FriendInfoHandler handler = new FriendInfoHandler(100);
-		
 		while(true) {
 			//1.메뉴를 출력한다.
 			menuShow();
