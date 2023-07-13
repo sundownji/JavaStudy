@@ -55,7 +55,7 @@ public class E11Polymorphism {
 	public static void main(String[] args) {
 	System.out.println("[자식으로 자식객체 참조 - 동질화]");
 	//호모지니어스 동질화: 참조변수와 인스턴스의 타입이 동일하다.
-	Child homeChild = new Child(); //new차일드 인스턴스 생성 child 타입의 homechild객체
+	Child homeChild = new Child(); //new차일드 인스턴스 생성 child 타입의 homeChild객체
 	//동질화의 경우 인스턴스 전체를 접근할 수 있다.
 	homeChild.childMember = 10;
 	homeChild.parentMember = 100;
