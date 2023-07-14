@@ -4,13 +4,15 @@ public class QuArray1To10 {
 
 	public static void main(String[] args) {
 		System.out.println("초기화된 배열 요소");
+		
 		int[] numarr = new int[10];
-	
+		//0~9까지 +1 하면 1~10
 		for(int i=0; i<=numarr.length; i++ ) {
 			numarr[i]= i+1;}
 		
 		int sum =0;
-		
+		//배열전체를 기준으로 해서 왼쪽에 참조형태로 원소를 꺼내주는 방법 인덱스가 필요 없음
+		//표기 하지 않아도 변수를 순수하게 사용해서 원소를 순차적으로 꺼내서 왼쪽 변수에 담아 사용가능
 		for(int e : numarr) {
 			System.out.print(e+" ");
 			sum += e;
