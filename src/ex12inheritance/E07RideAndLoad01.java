@@ -72,8 +72,6 @@ public class E07RideAndLoad01 {
 //		ref1.loadMethod(1.1);
 		
 		
-		
-		
 
 		
 		////////////////////////////////////////
