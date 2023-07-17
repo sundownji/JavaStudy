@@ -38,12 +38,12 @@ import java.util.Scanner;
 public class QuRockPaperScissors {
 
 	public static void main(String[] args) {
+		System.out.println("무엇을 내겠습니까? (1:가위,2:바위,3:보):");
 		Scanner scanner = new Scanner(System.in);
 		int player = scanner.nextInt();
 		int com = 0;
 		Random r = new Random();
 		com = r.nextInt(3)+1;
-		System.out.println("무엇을 내겠습니까? (1:가위,2:바위,3:보):");
 		System.out.println("사용자:"+player+",컴퓨터:"+com);
 		
 		if(player == 1) {
@@ -81,6 +81,7 @@ public class QuRockPaperScissors {
 		}
 		else if(0>= player || player >= 4){
 			System.out.println("다시 입력하세요.");
+			
 		}
 
 	}

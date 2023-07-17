@@ -31,7 +31,7 @@ class Burger {
 			System.out.println("버거명:"+burgerN);
 			System.out.println("가격 :" + price);
 			System.out.println("식재료 :"+patty+source+vegetable);
-	
+			System.out.printf("식재료:%s,%s,%s\n,"+patty,source,vegetable);
 		}
 		
 	
@@ -45,7 +45,7 @@ class HamburgerPrice {
 		final int POTATO = 1500;
 		
 				
-		//인자생성자
+		//인자생성자: 멤버상수는 이미 초기화되어 있으므로 햄버거 인스턴스만 초기화한다.
 		public HamburgerPrice(Burger burger) {
 			this.burger = burger;
 	
@@ -58,7 +58,7 @@ class HamburgerPrice {
 
 		//햄버거와 결제금액 출력
 		public void showPrice() {
-			burger.showburger();
+			burger.showburger(); //햄버거의 정보 출력
 			System.out.printf("결제금액: %d\n",showdefultprice());
 			System.out.println("=============================");
 			}
@@ -76,6 +76,7 @@ class SetPrice extends HamburgerPrice {
 		//세트가격계산(오버라이딩)
 		@Override
 		public int showdefultprice() {
+			//return super.price() -500;
 			return burger.getPrice()+COKE+POTATO-500; 
 
 		}

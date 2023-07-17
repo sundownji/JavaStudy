@@ -5,12 +5,12 @@ public class Real {
 	public static void main(String[] args) {
 
 	Parent1 p = new Child1();
-	Child1 c = new Child1();
+	Child1 c1 = new Child1();
 	System.out.println("p.x="+p.x);
 	p.method();
 	System.out.println();
-	System.out.println("c.x="+c.x);
-	c.method();
+	System.out.println("c.x="+c1.x);
+	c1.method();
 	}
 }
 
