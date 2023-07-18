@@ -12,7 +12,6 @@ public class Ex02PreDefineException2 {
 			   불가능하므로 예외가 발생된다. */
 			 //숫자포맷이 아닌데 숫자포맷으로 실행할경우 오류난디 
 			 //자스 10살해도 10만 출력되는데 자바는 10살하면 오류로 출력
-			 
 			 System.out.print("나이를 입력하세요.");
 			 String strAge = sc.nextLine();
 			 int ageAfter10 = Integer.parseInt(strAge)+10;
