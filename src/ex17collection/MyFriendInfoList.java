@@ -110,7 +110,7 @@ public class MyFriendInfoList {
 		//기능을 담당하는 핸들러 클래스의 인스턴스 생성
 		//컬렉션은 인스턴스 생성시 크기를 지정할 필요가 없다.
 		//데이터의 갯수에 따라 자동으로 증가된다.
-		FriendInfoHandler handler = new FriendInfoHandler();
+		FriendInfoHandler handler = new FriendInfoHandler(int 3);
 		while(true) {
 			//1.메뉴를 출력한다.
 			menuShow();
@@ -151,15 +151,12 @@ class FriendInfoHandler{
 	/*기존에 인스턴스배열에 저장했던 것을 컬렉션으로 변경한다. 컬렉션은 제네릭을 기반으로
 	 하므로 인스턴스 생성시 저장할 객체의 타입을 결정하게 된다. 여기서는 Friend클래스를
 	 상속한 High, Univ를 저장할 것이므로 아래와 같이 선언하면 된다.*/
-	ArrayList<Friend> myFriends;
+	ArrayList<Friend> lists;
 	
 	//생성자: 컬렉션은 데이터 저장시 자동인덱싱이 되므로 크기는 필요없다.
-	public FriendInfoHandler() {
-//		myFriends = new Friend[num];
-//		numOfFriends = 0;
-		//생성자에서 정보를 저장할 List 계열의 컬렉션을 생성한다. 
-		//컬렉션 자동 인덱션해서 인수 받고 초기화 안해도 된다.
-		myFriends = new ArrayList<Friend>();
+	public FriendInfoHandler(int num) {
+		lists = new ArrayList<Friend>();
+
 	}
 	
 	/*
@@ -186,7 +183,7 @@ class FriendInfoHandler{
 			/*High 인스턴스를 생성 해당 인스턴스는 자신의 타입이나 부모인 Friend에
 			 저장할 수 있다.*/ 
 			Friend f = new HighFriend(iName, iPhone, iAddr, iNickname);	
-			myFriends.add(f);
+			lists.add(f);
 		
 		}
 		else if(choice==2) {
@@ -194,7 +191,7 @@ class FriendInfoHandler{
 			//next() = nextLine() 같은거임
 			System.out.print("전공:");iMajor = scan.next();
 			//부모기 때문에 바로 접근 가능
-			myFriends.add(new UnivFriend(iName, iPhone, iAddr, iMajor));
+			lists.add(new UnivFriend(iName, iPhone, iAddr, iMajor));
 		}
 		/*기존 객체 배열은 정보를 추가할때마다 인덱싱을 위해 변수를 ++ 하는 부분이
 		 필요하겠지만, List의 경우 자동인덱싱을 지원하므로 단지 추가만 해주면된다.*/
@@ -202,25 +199,33 @@ class FriendInfoHandler{
 
 	//친구의 전체 정보 출력(확장 for문 사용)
 	public void showAllDate() {
+		for(int i = 0; i<lists.size(); i++) {
+			lists.get(i).showAllDate();
+		}
+		System.out.println("===전체정보 출력====");
 		/* 배열,변수,정보 꺼내오기
 		 * 확장for문의 형식
 		 	=>for(저장된 타입 참조변수:반복 할 배열 or 컬렉션(인스턴스)){
 		 */
-		for(Friend fr: myFriends) {
-			fr.showAllDate();
+//		for(Friend fr: myFriends) {
+//			fr.showAllDate();
 //			System.out.println(fr.showAllDate()); 프린트 안에서 프린트 부르는 거 오류		
 		}
-	}
+	
 	//사용법이 다른 거지 fr.=.next는 같은 것이라고 생각하면 된디
 	//친구의 간략 정보 출력(이터레이터 사용) itr 이터레이터 변수 이름으로 자주사용
 	//이터레이터 단계가 하나 추가된다고 생각하면 된다.
 	//하나씩 꺼내는게 포인트
 	public void showSimpleInfo() {
-		Iterator<Friend> itr = myFriends.iterator();
-		//원소가 있는지 알수 있는 함수 hasNext()
-		while(itr.hasNext()) {
-			itr.next().showBasicInfo();
+		for(Friend fr:lists) {
+			fr.showBasicInfo();
 		}
+		System.out.println("==간략 정보가 출력==");
+//		Iterator<Friend> itr = lists.iterator();
+//		//원소가 있는지 알수 있는 함수 hasNext()
+//		while(itr.hasNext()) {
+//			itr.next().showBasicInfo();
+//		}
 	}	
 	
 	/////////////////////////////////////////////////////////////
@@ -232,20 +237,31 @@ class FriendInfoHandler{
 		System.out.print("검색할 이름을 입력하세요.:");
 		String searchName = scan.nextLine();
 		
-		//저장된 갯수만큼 반복해서 검색
-		for(Friend fr:myFriends) {
-			//입력한 이름과 일치하는 항목을 찾는다.
-			if(searchName.equals(fr.name)){
-				fr.showBasicInfo();
+		Iterator<Friend> itr = lists.iterator();
+		while(itr.hasNext()) {
+			Friend fr = itr.next();
+			if(searchName.compareTo(fr.name)==0) {
+				fr.showAllDate();
+				System.out.println("==귀하가 요청하는 정보를 찾았습니다==");
 				isFind = true;
 			}
 		}
-		
-		if(isFind==true) 
-			System.out.println("일치하는 정보를 찾았습니다.");
-		else {
-			System.out.println("일치하는 정보가 없습니다.");
-		}
+		if(isFind==false)
+			System.out.println("==찾는 정보가 없습니다.");
+//		//저장된 갯수만큼 반복해서 검색
+//		for(Friend fr:myFriends) {
+//			//입력한 이름과 일치하는 항목을 찾는다.
+//			if(searchName.equals(fr.name)){
+//				fr.showBasicInfo();
+//				isFind = true;
+//			}
+//		}
+//		
+//		if(isFind==true) 
+//			System.out.println("일치하는 정보를 찾았습니다.");
+//		else {
+//			System.out.println("일치하는 정보가 없습니다.");
+//		}
 		
 		
 		
@@ -273,24 +289,33 @@ class FriendInfoHandler{
 		System.out.print("삭제할 이름을 입력하세요:");
 		String deleteName = scan.nextLine();
 		
-		Iterator<Friend> itr = myFriends.iterator();
-		while(itr.hasNext()) {
-			Friend fr = itr.next();
-			if(fr.name.equals(deleteName)) {
-				myFriends.remove(fr);
-				isFind = true;
+		int deleteIndex = -1;
+		for(Friend fr: lists) {
+			if(deleteName.compareTo(fr.name)==0) {
+				lists.remove(fr);
+				deleteIndex = 1;
 				break;
 			}
 		}
-		
-		if(isFind==true) {
-			System.out.println("삭제되었습니다.");
+		if(deleteIndex==-1) {
+			System.out.println("삭제된 데이터 없음");
 		}
 		else {
-			System.out.println("검색된 이름이 없습니다.");
+			System.out.println("데이터 삭제");
 		}
 		
 	}
+//		Iterator<Friend> itr = lists.iterator();
+//		while(itr.hasNext()) {
+//			Friend fr = itr.next();
+//			if(fr.name.equals(deleteName)) {
+//				lists.remove(fr);
+//				isFind = true;
+//				break;
+//			}
+//		}
+		
+		
 		
 //		for(Friend fr:myFriends) {
 //			if(deleteName.equals(fr.name)){
