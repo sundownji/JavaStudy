@@ -1,5 +1,6 @@
 package ex08class;
 
+
 //자동차를 추상화 한 클래스
 class Car {
 	//멤버변수: 자동차모델명,자동차소유주
