@@ -17,7 +17,9 @@ public class Ex02AnonymousClass {
 				
 				
 		};
-		sch.studyLambda("람다");
+
+
+		sch.studyLambda("람다식");
 
 	}
 
