@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import common.Teacher;
-
+//중복된 계좌번호의 계좌 생성 안된디 
 /*
 HashSet<E> : set계열의 컬렉션
  -set계열의 인터페이스를 구현한 컬렉션
